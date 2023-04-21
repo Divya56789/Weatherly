@@ -1,18 +1,9 @@
-*{
-    padding:0;
-    margin:0;
-    box-sizing: border-box;
-}
-body{
-    background-color: rgb(239, 239, 240);
-}
 .container{
     display : grid;
     height:100vh;
-    margin-left: 2rem;
-    margin-right: 2rem;
-    width: calc(100wh - 4rem);
-    grid-template-columns: 0.8fr 1fr 1fr 1fr;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 0.2fr 0.45fr 0.1fr 0.6fr 0.6fr 0.05fr ;
     grid-template-areas: 
     "section nav nav nav"
@@ -21,39 +12,73 @@ body{
     "section content1 content2 content3"
     "section content4 content5 content6"
     "section footer footer footer";
-    grid-gap: 10px;
+    grid-gap: 0.5rem;
     background-color: rgb(239, 239, 240);
 }
 section{
-    grid-area: section;    
+    grid-area: section; 
 }
 .sidebar{
-    display: flex;
+    display: grid;
     height: 100vh;
-    flex-direction: column;
-    justify-content: space-evenly;
-    padding-top: 1rem;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+    "searchPlaces"
+    "currentDayImage"
+    "currentDetail1"
+    "currentDetail2"
+    "image"
+    "sidebarfooter";
+    grid-gap: 0.2rem;
+}
+.searchPlaces{
+    grid-area: searchPlaces;
 }
 .sidebar .searchbar{
     width: 80%;
-    height: auto;
+    height: 40px;
     display: flex;
+    align-items: center;
     background-color: white;
     border-radius: 20px;
-    padding: 0.6rem 0rem;
+    margin-top: 1.5rem;
 }
+.currentDayImage{
+    grid-area: currentDayImage;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.currentDetail1{
+    grid-area: currentDetail1;
+}
+.currentDetail2{
+    grid-area: currentDetail2;
+}
+.image{
+    grid-area: image;
+    display: flex;
+    align-items: flex-start;
+    justify-content:flex-start;
+    position: relative;
+}
+.sidebarfooter{
+    grid-area: sidebarfooter;
+}
+
 ::placeholder{
     color: black;
     font-size: 16px;
 }
 .sidebar .searchbar input{
+    width: 100%;
     background: transparent;
     outline:none;
     border:none;
-    margin-left: 0.5rem;
+    font-size: 16px;
 }
 .searchbar img{
-    padding-left: 0.3rem;
+    padding:0 1rem;
 }
 .sidebar .searchbar input:focus{
     outline: none;
@@ -72,54 +97,59 @@ section{
 }
 .sidebar .image img{
     width: 80%;
-    height: 160px;
+    height: 130px;
     border-radius: 20px;
+    /* filter: blur(1px);
+  -webkit-filter: blur(1px); */
 }
-.currentDayImage{
-    display: flex;
+.location-image {
+    position: absolute;
+    top:40%;
+    left:40%;
+    transform: translate(-50%, -40%);
+    font-weight: bolder;
+    color: white;
+    font-size: 1.5rem;
 }
+
 nav{
     grid-area: nav;
-    /* background-color: beige; */
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
     align-items: center;
-    flex:100%;
+    justify-content: space-between;
 }
 nav .weather-report{
-    flex:60%;
+    display: flex;
 }
+nav .cel-frah{
+    display: flex;
+}
+
 nav .cel-frah button{
     width:35px;
     height: 35px;
     border-radius: 50%;
     margin-left: 6px;
-    flex:20%;
 }
-nav .avatar img{
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-left: 10px;
-    flex: 20%;
-}
+
 .daydetail{
     grid-area: daydetail;
-    /* background-color: brown; */
     display: flex;
     flex-direction: row;
 }
-.daydetail .clouds, .max-temp, .min-temp{
-    width: 130px;
-    height: auto;
+.daydetail > div {
+    background-color: white;
+    margin:0.5rem;
+    width: 120px;
+    border-radius:10px ;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    background-color: white;
-    border-radius: 10px;
-    margin-right: 1rem;
 }
+
 .today-highlights{
     grid-area: today-highlights;
     display: flex;
@@ -169,19 +199,21 @@ nav .avatar img{
     display: flex;
     align-items: center;
     margin-left: 5%;
-    /* background-color: rgb(255, 196, 0); */
 }
 .footer{
     grid-area: footer;
+    background-color: rgb(239, 239, 240);
 }
-@media screen and (max-width : 1089px){
+.footer .weatherly{
+    display: none;
+    padding: 0rem 0;
+
+}
+@media screen and (max-width : 900px){
     .container{
     display : grid;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    width: calc(100wh - 2rem);
-    grid-template-columns: 0.8fr 1fr 1fr ;
-    grid-template-rows: 0.2fr 0.45fr 0.1fr 0.6fr 0.6fr 0.6fr 0.05fr ;
+    grid-template-columns: 1fr 1fr 1fr ;
+    grid-template-rows: 0.1fr 0.2fr 0.05fr 0.3fr 0.3fr 0.3fr 0.05fr ;
     grid-template-areas: 
     "section nav nav"
     "section daydetail daydetail"
@@ -192,13 +224,11 @@ nav .avatar img{
     "section footer footer";
     }
 }
-@media screen and (max-width : 800px){
+@media screen and (max-width : 550px){
     .container{
     display : grid;
-    margin-left: 0rem;
-    margin-right: 0rem;
     grid-template-columns: 1fr;
-    grid-template-rows: 0.2fr 0.4fr 0.4fr 0.1fr 0.6fr 0.6fr 0.6fr 0.6fr 0.6fr 0.6fr 0.05fr ;
+    grid-template-rows: 0.2fr 0.4fr 0.4fr 0.1fr 0.6fr 0.6fr 0.6fr 0.6fr 0.6fr 0.6fr 0.1fr ;
     grid-template-areas: 
     "nav"
     "section"
@@ -212,33 +242,35 @@ nav .avatar img{
     "content6"
     "footer";
     }
-    .sidebar .image img{
-        width: 100%;
-        height: 160px;
-    }
+    
     .today-highlights{
-        padding: 1rem 0;
-        font-size: larger;
-        width: 90%;
-        margin:auto;
+        padding: 0.3rem 0;
     }
     .daydetail{
-        width: 90%;
-        margin:auto;
+        display: flex;
+        flex:100%;
+        /* background-color: aqua; */
     }
-    .daydetail .clouds, .max-temp, .min-temp{
-        padding: 1rem 0;
+    .daydetail > div {
+        background-color: white;
+        width: auto;
+        margin:0 0.2rem;
+        flex:25%;
+        border-radius:10px ;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0.5rem 0;
     }
+    .daydetail h3{
+        font-size: 13px;
+    }
+    
     .clouds img, .max-temp img, .min-temp img{
-        padding: 0.4rem 0;
+        margin: 0.65rem 0;
     }
-    .content1{
-        width: 90%;
-        margin:auto;
-    }
-    .content2, .content3, .content4, .content5, .content6{
-        width: 90%;
-        margin: auto;
+    
+    .content2, .content3, .content4, .content5, .content6{ 
         padding:1rem 0;
     } 
     #c1-p{
@@ -251,24 +283,38 @@ nav .avatar img{
         padding: 0.4rem 0;
     }
     nav{
-        background-color: white;
-        box-shadow: 0 0 5px #ccc; 
+        padding: 1rem 0;
      }
-    nav .weather-report{
-        margin-left: 0.3rem;
-    }
-    .currentDayImage{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-    }
-    .sidebar{
-        width: 90%;
-        margin:auto
-    }
     .sidebar .searchbar{
         width: 100%;
-        padding: 1rem 0;
+        border-radius: 31px;
+        margin-top: 0.8rem;
+
     }
+    .sidebar .image img{
+        width: 100%;
+        height: 120px;
+        border-radius: 20px;
+    }
+    .location-image {
+        position: absolute;
+        top:50%;
+        left:50%;
+        transform: translate(-50%, -50%);
+        font-size: 2rem;
+
+    }
+    .footer{
+        background-color: black;
+        border-top-right-radius: 10px;
+        border-top-left-radius: 10px;
+    }
+    .footer .weatherly{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        padding: 0.5rem 0;
+    }
+    
 }
