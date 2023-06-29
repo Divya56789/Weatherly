@@ -1,24 +1,24 @@
 import React, { useState } from "react";
 import axios from "axios";
-import speedometer from "./images/speedometer1.svg";
-import upward from "./images/Upward Arrow.svg";
-import downward from "./images/Scroll Down.svg";
-import search from "./images/search.svg";
-import clouds_1 from "./images/clouds_1.svg";
-import sun from "./images/sun.svg";
-import moon from "./images/Moon.svg";
-import sun_behind_cloud from "./images/sun_behind_cloud.svg";
-import moon_behind_cloud from "./images/moon_behind_cloud.svg";
-import clouds from "./images/clouds.svg";
-import rain from "./images/rain.svg";
-import rainy_night from "./images/rainy_night.svg";
-import sun_behind_rain_cloud from "./images/sun_behind_rain_cloud.svg";
-import lightning from "./images/cloud_with_lightning.svg";
-import snow from "./images/winter.svg";
-import fog from "./images/fog.svg";
-import cloud from "./images/cloud.svg";
-import buildings from "./images/buildings.jpg";
-import temp from "./images/temperature.svg";
+import speedometer from "../images/speedometer1.svg";
+import upward from "../images/Upward Arrow.svg";
+import downward from "../images/Scroll Down.svg";
+import search from '../images/search.svg';
+import clouds_1 from "../images/clouds_1.svg";
+import sun from "../images/sun.svg";
+import moon from "../images/Moon.svg";
+import sun_behind_cloud from "../images/sun_behind_cloud.svg";
+import moon_behind_cloud from "../images/moon_behind_cloud.svg";
+import clouds from "../images/clouds.svg";
+import rain from "../images/rain.svg";
+import rainy_night from "../images/rainy_night.svg";
+import sun_behind_rain_cloud from "../images/sun_behind_rain_cloud.svg";
+import lightning from "../images/cloud_with_lightning.svg";
+import snow from "../images/winter.svg";
+import fog from "../images/fog.svg";
+import cloud from "../images/cloud.svg";
+import buildings from "../images/buildings.jpg";
+import temp from "../images/temperature.svg";
 import "./main.css";
 import ReactSpeedometer from "react-d3-speedometer";
 import { useGeolocated } from "react-geolocated";
@@ -232,7 +232,7 @@ function Main(props) {
                 type="text"
                 placeholder="Search for places..."
                 value={location}
-                onKeyPress={searchPlaces}
+                onKeyDown={searchPlaces}
                 onChange={(e) => setLocation(e.target.value)}
               />
             </div>
@@ -330,7 +330,7 @@ function Main(props) {
                 <img src={cloud} alt="cloud" width={26} height={26} />
               )}
 
-              <p>{result.weatherMain ? result.weatherMain : "Weather Main"}</p>
+              <p style={{textTransform:"capitalize"}}>{result.weatherMain ? result.weatherMain : "Weather Main"}</p>
             </div>
             <div className="discription">
               {result.icon === "01d" ? (
@@ -386,7 +386,7 @@ function Main(props) {
                 <img src={cloud} alt="cloud" width={26} height={26} />
               )}
 
-              <p>
+              <p style={{textTransform:"capitalize"}}>
                 {result.weatherDesc
                   ? result.weatherDesc
                   : "Weather Description"}
