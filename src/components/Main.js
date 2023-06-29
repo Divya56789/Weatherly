@@ -90,7 +90,6 @@ function Main(props) {
             visibility: res.data.visibility / 1000,
             country: res.data.sys.country,
           });
-          console.log(res.data);
           isfetchLocation = true;
         })
 
@@ -132,7 +131,6 @@ function Main(props) {
             visibility: res.data.visibility / 1000,
             country: res.data.sys.country,
           });
-          console.log(res.data);
         })
         .catch((error) => {
           return alert("Sorry this place is not found in our database 😔");
@@ -314,7 +312,7 @@ function Main(props) {
               ) : result.icon === "09d" || result.icon === "09n" ? (
                 <img src={rain} alt="shower rain" width={26} height={26} />
               ) : result.icon === "10d" ? (
-                <img src={sun_behind_rain_cloud} alt="rain" />
+                <img src={sun_behind_rain_cloud} alt="rain" width={26} height={26}/>
               ) : result.icon === "10n" ? (
                 <img src={rainy_night} alt="rain" width={26} height={26} />
               ) : result.icon === "11d" || result.icon === "11n" ? (
